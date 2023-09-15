@@ -7,6 +7,9 @@ import AppMain from "./components/AppMain.vue";
 
 const searchMovies =
   "https://api.themoviedb.org/3/search/movie?api_key=34d7067604f99be5f00a7835b0bf3018&query=";
+
+const searchTv =
+  "https://api.themoviedb.org/3/search/tv?api_key=34d7067604f99be5f00a7835b0bf3018&query=";
 export default {
   data() {
     return {
@@ -33,18 +36,40 @@ export default {
             vote: vote_average,
           };
         });
-        console.log(store.movies);
+      });
+    },
+
+    fetchSearchTv(tvSearchKey) {
+      axios.get(searchTv + tvSearchKey).then((response) => {
+        // con map prendo solo le chiavi che mi servono
+        store.tvShows = response.data.results.map((tvShow) => {
+          const { id, name, original_name, origin_country, vote_average } =
+            tvShow;
+
+          return {
+            id,
+            title: name,
+            original_title: original_name,
+            language: origin_country,
+            vote: vote_average,
+          };
+        });
+        console.log(store.tvShows);
       });
     },
   },
+
   created() {
-    // this.fetchSearchMovie();
+    // this.fetchSearchTv();
   },
 };
 </script>
 
 <template>
-  <AppHeader @start-search="fetchSearchMovie" />
+  <AppHeader
+    @start-search="fetchSearchMovie"
+    @start-search-tv="fetchSearchTv"
+  />
 
   <AppMain />
 </template>

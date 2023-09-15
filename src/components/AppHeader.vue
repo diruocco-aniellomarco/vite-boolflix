@@ -6,7 +6,7 @@ export default {
     };
   },
 
-  emits: ["start-search"],
+  emits: ["start-search", "start-search-tv"],
 };
 </script>
 
@@ -16,7 +16,9 @@ export default {
       <h1>Boolflix</h1>
       <div class="d-flex align-items-center">
         <form
-          @submit.prevent="$emit('start-search', term)"
+          @submit.prevent="
+            $emit('start-search', term), $emit('start-search-tv', term)
+          "
           class="d-flex"
           role="search"
         >

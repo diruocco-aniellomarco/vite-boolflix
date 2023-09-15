@@ -28,7 +28,9 @@ export default {
   <div class="card text-center card-container">
     <img class="poster" :src="movie.poster" />
     <h3>{{ movie.title }}</h3>
-    <h4>{{ movie.original_title }}</h4>
+    <h4 v-if="movie.title != movie.original_title">
+      {{ movie.original_title }}
+    </h4>
     <div>
       <img class="flags" :src="imageGenerate(movie.language)" alt="" />
     </div>

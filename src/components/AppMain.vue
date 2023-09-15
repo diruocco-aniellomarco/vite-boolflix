@@ -7,7 +7,15 @@ export default {
 </script>
 
 <template>
-  <MovieList />
+  <div class="main-container">
+    <MovieList />
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.main-container {
+  background-color: #434343;
+  height: calc(100vh - 100px);
+  overflow: scroll;
+}
+</style>

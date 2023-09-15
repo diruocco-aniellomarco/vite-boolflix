@@ -39,7 +39,7 @@ export default {
             title,
             original_title,
             language: original_language,
-            vote: vote_average,
+            vote: Math.ceil(vote_average / 2),
             poster: "https://image.tmdb.org/t/p/w300" + poster_path,
           };
         });
@@ -68,7 +68,7 @@ export default {
             // in modo tale da poter usare il database di bandiere che ho
             // trovato su internet. Ho deciso di prendere solo la prima
             language: origin_country[0],
-            vote: vote_average,
+            vote: Math.ceil(vote_average / 2),
             poster: "https://image.tmdb.org/t/p/w300" + poster_path,
           };
         });

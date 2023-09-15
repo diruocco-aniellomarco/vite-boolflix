@@ -1,19 +1,34 @@
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      term: "",
+    };
+  },
+
+  emits: ["start-search"],
+};
+</script>
 
 <template>
   <section>
     <div class="header-container container">
       <h1>Boolflix</h1>
       <div class="d-flex align-items-center">
-        <div class="input-group">
+        <form
+          @submit.prevent="$emit('start-search', term)"
+          class="d-flex"
+          role="search"
+        >
           <input
-            type="text"
-            class="form-control"
-            placeholder="Username"
-            aria-label="Username"
+            v-model="term"
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
           />
-          <button>Cerca</button>
-        </div>
+          <button class="btn btn-outline-success" type="submit">Cerca</button>
+        </form>
       </div>
     </div>
   </section>
@@ -28,10 +43,6 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .input-group {
-      width: 250px;
-    }
   }
 }
 </style>

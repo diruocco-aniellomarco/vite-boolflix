@@ -6,6 +6,8 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+  <MovieList />
+</template>
 
 <style lang="scss" scoped></style>

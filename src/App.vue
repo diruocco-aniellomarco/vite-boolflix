@@ -45,14 +45,7 @@ export default {
 
 <template>
   <AppHeader @start-search="fetchSearchMovie" />
-  <ul>
-    <li v-for="movie in store.movies" :key="movie.id">
-      {{ movie.title }} <br />
-      {{ movie.original_title }} <br />
-      {{ movie.language }} <br />
-      {{ movie.vote }} <br />
-    </li>
-  </ul>
+
   <AppMain />
 </template>
 

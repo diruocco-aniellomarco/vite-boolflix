@@ -25,15 +25,22 @@ export default {
       axios.get(searchMovies + movieSearchKey).then((response) => {
         // con map prendo solo le chiavi che mi servono
         store.movies = response.data.results.map((movie) => {
-          const { id, title, original_title, original_language, vote_average } =
-            movie;
-
+          const {
+            id,
+            title,
+            original_title,
+            original_language,
+            vote_average,
+            poster_path,
+          } = movie;
+          // console.log(movie);
           return {
             id,
             title,
             original_title,
             language: original_language,
             vote: vote_average,
+            poster: "https://image.tmdb.org/t/p/w300" + poster_path,
           };
         });
       });
@@ -43,18 +50,29 @@ export default {
       axios.get(searchTv + tvSearchKey).then((response) => {
         // con map prendo solo le chiavi che mi servono
         store.tvShows = response.data.results.map((tvShow) => {
-          const { id, name, original_name, origin_country, vote_average } =
-            tvShow;
+          const {
+            id,
+            name,
+            original_name,
+            origin_country,
+            vote_average,
+            poster_path,
+          } = tvShow;
 
           return {
             id,
             title: name,
             original_title: original_name,
-            language: origin_country,
+            // N.B. qui ho usato il paese di origine
+            // (che è n array che che può contenere più stati) e non la lingua
+            // in modo tale da poter usare il database di bandiere che ho
+            // trovato su internet. Ho deciso di prendere solo la prima
+            language: origin_country[0],
             vote: vote_average,
+            poster: "https://image.tmdb.org/t/p/w300" + poster_path,
           };
         });
-        console.log(store.tvShows);
+        // console.log(store.tvShows);
       });
     },
   },

@@ -2,6 +2,11 @@
 import { createHydrationRenderer } from "vue";
 
 export default {
+  data() {
+    return {
+      posterLink: "",
+    };
+  },
   props: {
     movie: Object,
   },
@@ -21,16 +26,11 @@ export default {
 
 <template>
   <div class="card text-center card-container">
+    <img class="poster" :src="movie.poster" />
     <h3>{{ movie.title }}</h3>
     <h4>{{ movie.original_title }}</h4>
     <div>
-      <img
-        class="flags"
-        :src="imageGenerate(movie.language)"
-        alt="{{ movie.language }}"
-      />
-
-      <!-- <p>{{ movie.language }}</p> -->
+      <img class="flags" :src="imageGenerate(movie.language)" alt="" />
     </div>
     <p>{{ movie.vote }}</p>
   </div>
@@ -39,6 +39,10 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   width: 300px;
+  .poster {
+    width: 100%;
+    height: 400px;
+  }
   .flags {
     width: 40px;
   }

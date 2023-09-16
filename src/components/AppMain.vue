@@ -16,6 +16,6 @@ export default {
 .main-container {
   background-color: #434343;
   height: calc(100vh - 100px);
-  overflow: scroll;
+  overflow: auto;
 }
 </style>

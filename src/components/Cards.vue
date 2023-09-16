@@ -58,6 +58,7 @@ export default {
   width: 300px;
   height: 400px;
   position: relative;
+  margin-bottom: 20px;
   .info-card {
     display: none;
     position: absolute;
@@ -67,6 +68,7 @@ export default {
     height: 400px;
     color: white;
     background-color: black;
+    overflow: auto;
     .flags {
       width: 40px;
     }

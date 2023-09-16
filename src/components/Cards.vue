@@ -34,7 +34,16 @@ export default {
     <div>
       <img class="flags" :src="imageGenerate(movie.language)" alt="" />
     </div>
-    <p>{{ movie.vote }}</p>
+
+    <!-- <p>{{ movie.vote }}</p> -->
+    <div>
+      <span v-for="i in movie.vote"
+        ><font-awesome-icon icon="fa-solid fa-star"
+      /></span>
+      <span v-for="a in 5 - movie.vote">
+        <font-awesome-icon icon="fa-regular fa-star"
+      /></span>
+    </div>
   </div>
 </template>
 

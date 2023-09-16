@@ -27,22 +27,28 @@ export default {
 <template>
   <div class="card text-center card-container">
     <img class="poster" :src="movie.poster" />
-    <h3>{{ movie.title }}</h3>
-    <h4 v-if="movie.title != movie.original_title">
-      {{ movie.original_title }}
-    </h4>
-    <div>
-      <img class="flags" :src="imageGenerate(movie.language)" alt="" />
-    </div>
+    <div class="info-card text-start p-2">
+      <div class="mt-4">
+        <h4><span>Titolo: </span>"{{ movie.title }}"</h4>
+        <h5 v-if="movie.title != movie.original_title">
+          <span>Titolo originale: </span>"{{ movie.original_title }}"
+        </h5>
+        <div>
+          <img class="flags" :src="imageGenerate(movie.language)" alt="" />
+        </div>
 
-    <!-- <p>{{ movie.vote }}</p> -->
-    <div>
-      <span v-for="i in movie.vote"
-        ><font-awesome-icon icon="fa-solid fa-star"
-      /></span>
-      <span v-for="a in 5 - movie.vote">
-        <font-awesome-icon icon="fa-regular fa-star"
-      /></span>
+        <div>
+          <span class="star" v-for="i in movie.vote"
+            ><font-awesome-icon icon="fa-solid fa-star"
+          /></span>
+          <span v-for="a in 5 - movie.vote">
+            <font-awesome-icon icon="fa-regular fa-star"
+          /></span>
+        </div>
+        <div>
+          <p><span>Trama: </span>"{{ movie.trama }}"</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -50,12 +56,35 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   width: 300px;
+  height: 400px;
+  position: relative;
+  .info-card {
+    display: none;
+    position: absolute;
+    top: 0;
+
+    width: 300px;
+    height: 400px;
+    color: white;
+    background-color: black;
+    .flags {
+      width: 40px;
+    }
+    .star {
+      color: yellow;
+    }
+    &:hover {
+      display: block;
+    }
+  }
+
   .poster {
     width: 100%;
     height: 400px;
   }
-  .flags {
-    width: 40px;
+
+  & > img:hover + .info-card {
+    display: block;
   }
 }
 </style>

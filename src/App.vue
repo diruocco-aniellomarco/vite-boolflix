@@ -32,6 +32,7 @@ export default {
             original_language,
             vote_average,
             poster_path,
+            overview,
           } = movie;
           // console.log(movie);
           return {
@@ -41,6 +42,7 @@ export default {
             language: original_language,
             vote: Math.ceil(vote_average / 2),
             poster: "https://image.tmdb.org/t/p/w300" + poster_path,
+            trama: overview,
           };
         });
       });
@@ -57,6 +59,7 @@ export default {
             origin_country,
             vote_average,
             poster_path,
+            overview,
           } = tvShow;
 
           return {
@@ -70,6 +73,7 @@ export default {
             language: origin_country[0],
             vote: Math.ceil(vote_average / 2),
             poster: "https://image.tmdb.org/t/p/w300" + poster_path,
+            trama: overview,
           };
         });
         // console.log(store.tvShows);
